@@ -1,19 +1,19 @@
 function getComputerChoice(){
-    let computerChoice = Math.random();
-    if (computerChoice <= .33){
+    let choice = Math.random();
+    if (choice <= .33){
         return "rock"
     }
-    else if (computerChoice > .33 && choice <= .66){
+    else if (choice > .33 && choice <= .66){
         return "paper"
     }
-    else if (computerChoice > .66){
+    else if (choice > .66){
         return "scissors"
     }
 }
 
 function getHumanChoice(){
-    let humanChoice = prompt("Rock, Paper, or Scissors?");
-    return humanChoice
+    let choice = prompt("Rock, Paper, or Scissors?");
+    return choice;
 }
 
 
@@ -24,8 +24,10 @@ let humanScore = 0;
 let computerChoice = getComputerChoice();
 let humanChoice = getHumanChoice();
 
+// Issue: || and && need to be used with boolean values
+// (humanChoice == "rock" && computerChoice == "rock") || (humanChoice == "paper" && computerChoice == "paper") || (humanChoice == "scissors" && computerChoice == "scissors")  
 function playRound(){
-   if ((humanChoice == "rock" && computerChoice == "rock") || (humanChoice == "paper" && computerChoice == "paper") || (humanChoice == "scissors" && computerChoice == "scissors")  ){
+   if (humanChoice == computerChoice){
     return console.log("It's a tie!")
    }
    else if (humanChoice=="rock" && computerChoice == "scissors") {
@@ -41,7 +43,7 @@ function playRound(){
     return console.log("Computer wins")
    }
    else if (humanChoice=="scissors" && computerChoice == "rock") {
-    console.log("Computer wins")
+    return console.log("Computer wins")
    }
    else if (humanChoice=="scissors" && computerChoice == "paper") {
     return console.log("Human wins")
@@ -51,16 +53,21 @@ function playRound(){
 let result = playRound();
 
 function scoring(){
-    if (result == "Human wins") {
-        humanScore++
+    if (result === "Human wins") {
+        return ++humanScore
        }
-       else {
-        computerScore++
+    else if (result === "Computer wins") {
+        return ++computerScore
        }
+    else {
+        return "Nobody wins!"
+    }
 }
 
-// console.log(playRound());
+// console.log(playRound()); (Results in 'undefined')
 console.log(scoring());
+console.log(humanChoice);
+console.log(computerChoice);
 console.log(humanScore);
 console.log(computerScore);
 
