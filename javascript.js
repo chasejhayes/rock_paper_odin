@@ -19,7 +19,7 @@ function playGame(){
     
     function getHumanChoice(){
         let choice = prompt("Rock, Paper, or Scissors?");
-        return choice;
+        return choice.toLowerCase();
     }
     
     let computerChoice = getComputerChoice();
@@ -61,15 +61,19 @@ function playGame(){
         else {
             return "Nobody wins!"
         }
-    }
-
+    }  
+    
     console.log(scoring());
     console.log(humanChoice);
     console.log(computerChoice);
     console.log(humanScore);
     console.log(computerScore);
 
-}
+    }
+
+
+
+
 
 function endGame(){
     if (computerScore > humanScore){
@@ -96,5 +100,3 @@ console.log(endGame());
 
 
 
-// remake to switch statement
-// Make player imput case insensitive
