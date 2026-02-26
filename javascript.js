@@ -1,3 +1,28 @@
+// const rockButton = document.createElement("button");
+// const paperButton = document.createElement("button");
+// const scissorsButton = document.createElement("button");
+
+// rockButton.textContent = "ROCK";
+// paperButton.textContent = "PAPER";
+// scissorsButton.textContent = "SCISSORS";
+
+// const body = document.querySelector(".body");
+// body.appendChild(rockButton);
+// body.appendChild(paperButton);
+// body.appendChild(scissorsButton);
+
+
+// const btn = document.querySelector("button");
+
+// function btnRound(){
+//     return playGame()
+// } 
+
+// btn.addEventListener("click", btnRound)
+
+
+
+
 let computerScore = 0;
 let humanScore = 0;
 
@@ -87,16 +112,45 @@ function endGame(){
     }
 }
 
-console.log(playGame());
-console.log(playGame());
-console.log(playGame());
-console.log(playGame());
-console.log(playGame());
-console.log(endGame());
+// console.log(playGame());
+// console.log(playGame());
+// console.log(playGame());
+// console.log(playGame());
+// console.log(playGame());
+// console.log(endGame());
+
+
+const rockButton = document.createElement("button");
+const paperButton = document.createElement("button");
+const scissorsButton = document.createElement("button");
+
+rockButton.textContent = "ROCK";
+paperButton.textContent = "PAPER";
+scissorsButton.textContent = "SCISSORS";
+
+rockButton.classList.add("rock");
+paperButton.classList.add("paper");
+scissorsButton.classList.add("scissors");
 
 
 
+const body = document.querySelector(".body");
+body.appendChild(rockButton);
+body.appendChild(paperButton);
+body.appendChild(scissorsButton);
 
+
+const playRock = document.querySelector(".rock");
+const playPaper = document.querySelector(".paper");
+const playScissors = document.querySelector(".scissors");
+
+function btnRound(){
+    return playGame()
+} 
+
+playRock.addEventListener("click", btnRound);
+playPaper.addEventListener("click", btnRound);
+playScissors.addEventListener("click", btnRound);
 
 
 
