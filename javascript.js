@@ -2,6 +2,8 @@
 let computerScore = 0;
 let humanScore = 0;
 
+let numberOfRounds = 0;
+
 
 function playGame(entry) {
 
@@ -51,6 +53,7 @@ function playGame(entry) {
 
 
     function scoring() {
+        ++numberOfRounds;
         if (result == "Human wins") {
             ++humanScore;
             return "Human wins!"
@@ -63,6 +66,8 @@ function playGame(entry) {
             return "Nobody wins!"
         }
     }
+
+    let scoringResult = scoring();
 
     // console.log(scoring());
     // console.log(humanChoice);
@@ -77,50 +82,55 @@ function playGame(entry) {
     const playerScoreText = document.createElement("p");
     const computerScoreText = document.createElement("p");
     const whoWonText = document.createElement("p");
+    const endGameText = document.createElement("p");
 
     playerChoiceText.classList.add("playerChoice");
-    computerChoiceText. classList.add("computerChoice");
+    computerChoiceText.classList.add("computerChoice");
     playerScoreText.classList.add("playerScore");
     computerScoreText.classList.add("computerScore");
     whoWonText.classList.add("whoWon");
-
-    // const test = document.getElementsByClassName("playerChoice");
-
-   
+    endGameText.classList.add("endGame");
 
 
     body.appendChild(div);
     div.appendChild(playerChoiceText);
     div.appendChild(computerChoiceText);
     div.appendChild(playerScoreText);
-    div.appendChild(computerChoiceText);
+    div.appendChild(computerScoreText);
     div.appendChild(whoWonText);
+    div.appendChild(endGameText);
 
-    // test.textContent = humanChoice;
 
 
-    
-    playerChoiceText.textContent = getHumanChoice();
-    computerChoiceText.textContent = getComputerChoice();
+    playerChoiceText.textContent = humanChoice;
+    computerChoiceText.textContent = computerChoice;
     playerScoreText.textContent = humanScore;
     computerScoreText.textContent = computerScore;
-    whoWonText.textContent = scoring();
+    whoWonText.textContent = scoringResult;
+    endGameText.textContent = endGame();
+
+    function endGame() {
+        if (numberOfRounds<5){
+            return "";
+        }
+        else if (numberOfRounds=5 && computerScore > humanScore) {
+            return "Computer wins the game!"
+        }
+        else if (numberOfRounds=5 && humanScore > computerScore) {
+            return "Human wins the game!"
+        }
+        else {
+            return "The game is tied!"
+        }
+    }
+
+    endGame();
 
 }
 
 
 
-function endGame() {
-    if (computerScore > humanScore) {
-        return "Computer wins the game!"
-    }
-    else if (humanScore > computerScore) {
-        return "Human wins the game!"
-    }
-    else {
-        return "The game is tied!"
-    }
-}
+
 
 
 
@@ -141,7 +151,7 @@ scissorsButton.classList.add("scissors");
 
 
 // adds the buttons to the body
-const body = document.querySelector(".body");
+const body = document.querySelector("body");
 body.appendChild(rockButton);
 body.appendChild(paperButton);
 body.appendChild(scissorsButton);
